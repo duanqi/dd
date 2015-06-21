@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dd.myapp.modules.base.dao.SchoolPackageMapper" >
+  <resultMap id="BaseResultMap" type="com.dd.myapp.modules.base.entity.SchoolPackage" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="medical_exam" property="medicalExam" jdbcType="BIT" />
+    <result column="re_exam_fee" property="reExamFee" jdbcType="BIT" />
+    <result column="study_shuttle" property="studyShuttle" jdbcType="BIT" />
+    <result column="exam_shuttle" property="examShuttle" jdbcType="BIT" />
+    <result column="handle_temp_resd" property="handleTempResd" jdbcType="BIT" />
+    <result column="school_id" property="schoolId" jdbcType="BIGINT" />
+    <result column="exam_grade_id" property="examGradeId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, price, medical_exam, re_exam_fee, study_shuttle, exam_shuttle, handle_temp_resd, 
+    school_id, exam_grade_id, create_time, modify_time, deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from school_package
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from school_package
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dd.myapp.modules.base.entity.SchoolPackage" >
+    insert into school_package (id, price, medical_exam, 
+      re_exam_fee, study_shuttle, exam_shuttle, 
+      handle_temp_resd, school_id, exam_grade_id, 
+      create_time, modify_time, deleted
+      )
+    values (#{id,jdbcType=BIGINT}, #{price,jdbcType=DOUBLE}, #{medicalExam,jdbcType=BIT}, 
+      #{reExamFee,jdbcType=BIT}, #{studyShuttle,jdbcType=BIT}, #{examShuttle,jdbcType=BIT}, 
+      #{handleTempResd,jdbcType=BIT}, #{schoolId,jdbcType=BIGINT}, #{examGradeId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dd.myapp.modules.base.entity.SchoolPackage" >
+    insert into school_package
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="medicalExam != null" >
+        medical_exam,
+      </if>
+      <if test="reExamFee != null" >
+        re_exam_fee,
+      </if>
+      <if test="studyShuttle != null" >
+        study_shuttle,
+      </if>
+      <if test="examShuttle != null" >
+        exam_shuttle,
+      </if>
+      <if test="handleTempResd != null" >
+        handle_temp_resd,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+      <if test="examGradeId != null" >
+        exam_grade_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="medicalExam != null" >
+        #{medicalExam,jdbcType=BIT},
+      </if>
+      <if test="reExamFee != null" >
+        #{reExamFee,jdbcType=BIT},
+      </if>
+      <if test="studyShuttle != null" >
+        #{studyShuttle,jdbcType=BIT},
+      </if>
+      <if test="examShuttle != null" >
+        #{examShuttle,jdbcType=BIT},
+      </if>
+      <if test="handleTempResd != null" >
+        #{handleTempResd,jdbcType=BIT},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=BIGINT},
+      </if>
+      <if test="examGradeId != null" >
+        #{examGradeId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dd.myapp.modules.base.entity.SchoolPackage" >
+    update school_package
+    <set >
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="medicalExam != null" >
+        medical_exam = #{medicalExam,jdbcType=BIT},
+      </if>
+      <if test="reExamFee != null" >
+        re_exam_fee = #{reExamFee,jdbcType=BIT},
+      </if>
+      <if test="studyShuttle != null" >
+        study_shuttle = #{studyShuttle,jdbcType=BIT},
+      </if>
+      <if test="examShuttle != null" >
+        exam_shuttle = #{examShuttle,jdbcType=BIT},
+      </if>
+      <if test="handleTempResd != null" >
+        handle_temp_resd = #{handleTempResd,jdbcType=BIT},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=BIGINT},
+      </if>
+      <if test="examGradeId != null" >
+        exam_grade_id = #{examGradeId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dd.myapp.modules.base.entity.SchoolPackage" >
+    update school_package
+    set price = #{price,jdbcType=DOUBLE},
+      medical_exam = #{medicalExam,jdbcType=BIT},
+      re_exam_fee = #{reExamFee,jdbcType=BIT},
+      study_shuttle = #{studyShuttle,jdbcType=BIT},
+      exam_shuttle = #{examShuttle,jdbcType=BIT},
+      handle_temp_resd = #{handleTempResd,jdbcType=BIT},
+      school_id = #{schoolId,jdbcType=BIGINT},
+      exam_grade_id = #{examGradeId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="getListsBySchoolId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select sp.*, eg.name
+    from school_package sp
+    JOIN exam_grade eg ON sp.exam_grade_id = eg.id
+	WHERE sp.school_id = #{id,jdbcType=BIGINT} AND sp.deleted = 0 AND eg.deleted = 0
+  </select>
+  
+</mapper>
